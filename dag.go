@@ -49,7 +49,7 @@ func (dag *Dag) Pipeline(tasks ...func()) *pipelineResult {
 
 	job := &Job{
 		tasks:      make([]func(), len(tasks)),
-		sequential: true,
+		sequential: true, // 同步
 	}
 
 	for i, task := range tasks {
@@ -68,7 +68,7 @@ func (dag *Dag) Spawns(tasks ...func()) *spawnsResult {
 
 	job := &Job{
 		tasks:      make([]func(), len(tasks)),
-		sequential: false,
+		sequential: false, // 异步
 	}
 
 	for i, task := range tasks {

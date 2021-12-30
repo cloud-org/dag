@@ -14,7 +14,7 @@ func main() {
 
 	d := dag.New()
 	d.Pipeline(f1, f2).Then().Spawns(f3, f4)
-	d.RunAsync(onComplete)
+	d.RunAsync(onComplete) // 异步跑，需要 wg.Wait()
 
 	wg.Wait()
 }
